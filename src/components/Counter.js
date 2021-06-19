@@ -27,3 +27,4 @@ const Counter = () => {
 };
 
 export default Counter;
+//there is a class based component for this available on github
