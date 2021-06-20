@@ -1,3 +1,4 @@
+import { counterActions } from "../store/index";
 import { useSelector, useDispatch } from "react-redux";
 import classes from "./Counter.module.css";
 
@@ -9,19 +10,19 @@ const Counter = () => {
   const userInput = 10;
 
   const incrementHandler = () => {
-    dispatch({ type: "increment" }); ///must be exact the same typo from the store
+    dispatch(counterActions.increment());
   };
   const increaseHandler = () => {
-    dispatch({ type: "increase", amount: userInput });
+    dispatch(counterActions.increase(userInput)); //example on how to pass a payload
   };
   const decrementHandler = () => {
-    dispatch({ type: "decrement" }); ///must be exact the same typo from the store
+    dispatch(counterActions.decrement());
   };
   const decreaseHandler = () => {
-    dispatch({ type: "decrease", amount: userInput }); ///must be exact the same typo from the store
+    dispatch(counterActions.decrease(userInput)); //example on how to pass a payload
   };
   const toggleCounterHandler = () => {
-    dispatch({ type: "toggle" });
+    dispatch(counterActions.toggle());
   };
 
   return (
