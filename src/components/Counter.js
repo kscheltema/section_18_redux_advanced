@@ -1,39 +1,37 @@
-import { counterActions } from "../store/index";
 import { useSelector, useDispatch } from "react-redux";
+
+import { counterActions } from "../store/index";
 import classes from "./Counter.module.css";
 
 const Counter = () => {
   const dispatch = useDispatch();
-  const count = useSelector((state) => state.count);
-  const show = useSelector((state) => state.showCount);
-
-  const userInput = 10;
+  const counter = useSelector((state) => state.counter.counter);
+  const show = useSelector((state) => state.counter.showCounter);
 
   const incrementHandler = () => {
     dispatch(counterActions.increment());
   };
+
   const increaseHandler = () => {
-    dispatch(counterActions.increase(userInput)); //example on how to pass a payload
+    dispatch(counterActions.increase(10)); // { type: SOME_UNIQUE_IDENTIFIER, payload: 10 }
   };
+
   const decrementHandler = () => {
     dispatch(counterActions.decrement());
   };
-  const decreaseHandler = () => {
-    dispatch(counterActions.decrease(userInput)); //example on how to pass a payload
-  };
+
   const toggleCounterHandler = () => {
-    dispatch(counterActions.toggle());
+    dispatch(counterActions.toggleCounter());
   };
 
   return (
     <main className={classes.counter}>
       <h1>Redux Counter</h1>
-      {show && <div className={classes.value}>{count}</div>}
+      {show && <div className={classes.value}>{counter}</div>}
       <div>
-        <button onClick={incrementHandler}>INCREMENT</button>
-        <button onClick={increaseHandler}>PLUS user number</button>
-        <button onClick={decrementHandler}>DECREMENT</button>
-        <button onClick={decreaseHandler}>MINUS user number</button>
+        <button onClick={incrementHandler}>Increment</button>
+        <button onClick={increaseHandler}>Increase by 10</button>
+        <button onClick={decrementHandler}>Decrement</button>
       </div>
       <button onClick={toggleCounterHandler}>Toggle Counter</button>
     </main>
@@ -41,4 +39,3 @@ const Counter = () => {
 };
 
 export default Counter;
-//there is a class based component for this available on github
